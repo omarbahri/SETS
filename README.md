@@ -1,21 +1,14 @@
 # SETS
 This is the accompanying repository of our paper ["Shapelet-based Temporal Association Rule Mining for Multivariate Time Series Classification"](https://kdd-milets.github.io/milets2022/papers/MILETS_2022_paper_7874.pdf) presented at the SIGKDD 2022 Workshop on Mining and Learning from Time Series (MiLeTS).
 
-### Project website: <br />
-https://sites.google.com/view/ruletransform/
 ### Installation: <br />
-python3.6.13 is required. I suggest using conda to create the virtual environment:
+The packages required to run this code are listed in `requirements.txt`. 
+To create a new virtual environment and install them:
 ```
-conda create -n rt python=3.6.13
-```
-or alternatively, install python3.6.13 and: <br />
-```
-python3.6.13 -m venv ./rt
-source venv/bin/activate
-```
-Then:<br />
-```
-pip install git+https://github.com/omarbahri/RuleTransform
+python3 -m pip install --user virtualenv
+python3 -m venv sets
+source sets/bin/activate
+pip install -r requirements.txt
 ```
 ### Instructions: <br />
 The BasicMotions dataset is uploaded to the `data` directory. The other UEA datasets can be downloaded [here](https://timeseriesclassification.com/dataset.php).
