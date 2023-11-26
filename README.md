@@ -11,18 +11,5 @@ source sets/bin/activate
 pip install -r requirements.txt
 ```
 ### Instructions: <br />
-The BasicMotions dataset is uploaded to the `data` directory. The other UEA datasets can be downloaded [here](https://timeseriesclassification.com/dataset.php).
-The `examples/rule_transform` notebook provides a tutorial on how to run mine rules using RuleTransform, use the rules for classification, and visualize them.
-### Citation: <br />
-```
-@inproceedings{bahri2022,
-   title = {Shapelet-based Temporal Association Rule Mining for Multivariate Time Series Classification},
-   author = {Omar Bahri and Peiyu Li and Soukaina Filali Boubrahimi and Shah Muhammad Hamdi},
-   doi = {10.1109/BigData55660.2022.10020478},
-   isbn = {9781665480451},
-   booktitle = {Proceedings of the 2022 IEEE International Conference on Big Data},
-   pages = {242-251},
-   publisher = {Institute of Electrical and Electronics Engineers Inc.},
-   year = {2022},
-}
-```
+The solar flare dataset is provided in the `data/sf` directory.
+`sets.sh` runs SETS on the solar flare dataset as described in the paper. Feel free to experiment with different datasets and parameters. To use a custom dataset, split it into train and test sets as 3D Numpy arrays with shape `(N,D,L)`, such that `N` is the number of time series instances, `D` is the number of dimensions, and `L` is the time series length, and save it in a new directory under `data`.
