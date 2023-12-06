@@ -130,7 +130,7 @@ def main():
                 cf = X_test[instance_idx].copy()
                 cf_pred = model.predict(cf.reshape(1,-1))
                    
-                if y_pred[instance_idx] == cf_pred:
+                if cf_pred != target_c:
                     #Get the locations where the original class shapelets occur    
                     all_locs = get_shapelets_locations_test(instance_idx, all_shapelet_locations_test,
                                                        dim, original_all_shapelets_class)
@@ -140,7 +140,7 @@ def main():
                         for loc in all_locs.get(c_i):
                             cf_pred = model.predict(cf.reshape(1,-1))
                                                  
-                            if y_pred[instance_idx] == cf_pred:
+                            if cf_pred != target_c:
                                 # print('Removing original shapelet')
                                 nn = X_test[nn_idx].reshape(-1)
                                 
@@ -165,7 +165,7 @@ def main():
                     for _, target_shapelet_idx in enumerate(all_target_heat_maps[dim]):            
                         cf_pred = model.predict(cf.reshape(1,-1))
                         
-                        if y_pred[instance_idx] == cf_pred:
+                        if cf_pred != target_c:
                             # print('Introducing new shapelet')
                             
                             h_m = all_target_heat_maps[dim].get(target_shapelet_idx)   
@@ -204,13 +204,7 @@ def main():
                 cf_pred = model.predict(cf.reshape(1,-1))
                 
                 #if a CF is found, save it and move to next time series instance
-                if y_pred[instance_idx] != cf_pred:    
-                    # print('cf found')
-                    np.save(os.path.join(results, str(instance_idx) +\
-                            '_to_' + str(target_c) + '.npy'), cf)     
-                    break
-                
-                else:
+                if cf_pred != target_c:    
                     # print("Trying dims combinations")
                     #Try all combinations of dimensions
                     for L in range(0, len(shapelets_best_scores)+1):
@@ -228,7 +222,7 @@ def main():
                                     break
                         
                 #if a CF is found, save it and move to next time series instance
-                if y_pred[instance_idx] != cf_pred:    
+                if cf_pred == target_c:    
                     # print('cf found')
                     np.save(os.path.join(results, str(instance_idx) +\
                             '_to_' + str(target_c) + '.npy'), cf)     
