@@ -204,6 +204,7 @@ def main():
                 cf_pred = model.predict(cf.reshape(1,-1))
                 
                 #if a CF is found, save it and move to next time series instance
+<<<<<<< HEAD
                 if cf_pred == target_c:    
                     # print('cf found')
                     np.save(os.path.join(results, str(instance_idx) +\
@@ -211,6 +212,9 @@ def main():
                     break
                 
                 else:
+=======
+                if cf_pred != target_c:    
+>>>>>>> 66a4d90083c74e31ab0caa5802274ae42b1c86a1
                     # print("Trying dims combinations")
                     #Try all combinations of dimensions
                     for L in range(0, len(shapelets_best_scores)+1):
@@ -228,7 +232,7 @@ def main():
                                     break
                         
                 #if a CF is found, save it and move to next time series instance
-                if y_pred[instance_idx] != cf_pred:    
+                if cf_pred == target_c:    
                     # print('cf found')
                     np.save(os.path.join(results, str(instance_idx) +\
                             '_to_' + str(target_c) + '.npy'), cf)     
