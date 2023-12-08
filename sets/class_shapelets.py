@@ -120,10 +120,7 @@ def main():
                 heat_maps[c][s] = heat_map
                 
             all_heat_maps[c].append(heat_maps[c])
-            all_heat_maps[c].append(heat_maps[c])
-            all_heat_maps[c].append(heat_maps[c])
-            all_heat_maps[c].append(heat_maps[c])
-     
+            
     #save intermediate results
     np.save(os.path.join(inter_results, 'all_heat_maps.npy'), all_heat_maps)
     np.save(os.path.join(inter_results, 'all_shapelets_class.npy'), all_shapelets_class)
